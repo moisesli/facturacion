@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/moises', function (req, res) {
-    res.send('moises linares oscco')
+    res.send('moises linares oscco jijijijja')
 });
 
 module.exports = router
