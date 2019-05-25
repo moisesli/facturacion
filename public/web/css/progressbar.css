@@ -1,0 +1,123 @@
+.skills {
+	padding: 0;
+}
+.sonny_progressbar {
+	margin-bottom: 6px;
+}
+.sonny_progressbar p.title {
+	line-height: 20px;
+	margin: 0;
+	padding: 4px 0;
+	font-size: 16px;
+    font-weight: 300;
+	color: #666;
+    line-height: 1.6;
+    font-family: 'Raleway', sans-serif;
+}
+.sonny_progressbar .bar-container {
+	position: relative;
+	height: 15px;
+}
+.sonny_progressbar .bar-container li {
+    height: 35px;
+    position: relative;
+}
+@media (max-width: 480px) {
+   .sonny_progressbar .bar-container {
+      position: relative;
+	  height: 20px;
+    } 
+    .sonny_progressbar p.title {
+      font-family: 'Raleway', sans-serif;
+	  font-size: 16px;
+	  line-height: 25px;
+      font-weight: 300;
+	  margin: 0;
+	  padding: 5px 0;
+      color: #666;
+     }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    .sonny_progressbar .bar-container {
+       position: relative;
+	   height: 22px;
+    } 
+    .sonny_progressbar p.title {
+       font-family: 'Raleway', sans-serif;
+	   font-size: 16px;
+	   line-height: 25px;
+       font-weight: 500;
+	   margin: 0;
+	   padding: 5px 0;
+       color: #444;
+     }
+}
+.sonny_progressbar .backgroundBar {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+}
+.sonny_progressbar .bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: red;
+}
+.sonny_progressbar .targetBar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	-webkit-animation: Animation 2s infinite ease-in-out;
+	-moz-animation: Animation 2s infinite ease-in-out;
+	animation: Animation 2s infinite ease-in-out;
+}
+.sonny_progressbar .targetBar.loader {
+	-webkit-animation: AnimationB 4s infinite ease-in-out;
+	-moz-animation: AnimationB 4s infinite ease-in-out;
+	animation: AnimationB 4s infinite ease-in-out;
+}
+.sonny_progressbar .bar-container.border .bar, .sonny_progressbar .bar-container.border .targetBar, .sonny_progressbar .bar-container.border .backgroundBar {
+	border-bottom: 3px solid rgba(0,0,0,.2);
+}
+.sonny_progressbar .progress-percent {
+	font-family: 'Open-sans', sans-serif;
+	font-size: 18px;
+	position: absolute;
+	right: 15px;
+}
+
+@keyframes Animation {
+  0%   { opacity:.4; }
+  50%   { opacity:1; }
+  100% { opacity:.4; }
+}
+@-moz-keyframes Animation{
+  0%   { opacity:.4; }
+  50%   { opacity:1; }
+  100% { opacity:.4; }
+}
+@-webkit-keyframes Animation{
+  0%   { opacity:.4; }
+  50%   { opacity:1; }
+  100% { opacity:.4; }
+}
+@keyframes AnimationB {
+  0%   { opacity:.01; }
+  50%   { opacity:.1; }
+  100% { opacity:.01; }
+}
+@-moz-keyframes AnimationB {
+  0%   { opacity:.01; }
+  50%   { opacity:.1; }
+  100% { opacity:.01; }
+}
+@-webkit-keyframes AnimationB {
+  0%   { opacity:.01; }
+  50%   { opacity:.1; }
+  100% { opacity:.01; }
+}
