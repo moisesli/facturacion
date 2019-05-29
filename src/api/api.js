@@ -29,9 +29,12 @@ router.post('/verifica', (req,res) => {
   // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozfSwiaWF0IjoxNTU5MTA0MDM3fQ.XVWE7OCIpm__SW4tJem1hkX3F14gq5bL3jUGqyW6UbQ';
   jwt.verify(token, 'moises', function(err, user) {
     if (err) {
-      res.status(401).send({
-        error: 'Token inválido'
-      })
+      res.send({
+        token: ''
+      });
+      // res.status(401).send({
+      //   error: 'Token inválido'
+      // })
     } else {
       res.send({
         token: token
