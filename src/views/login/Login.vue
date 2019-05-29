@@ -17,7 +17,8 @@
     methods: {
       enviar: function () {
         axios.get('/api/login').then(res => {
-          console.log(res.data);
+          localStorage.setItem('token',res.data.token)
+          console.log(res.data.token);
         })
         // console.log(this.user);
       }

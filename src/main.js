@@ -7,10 +7,11 @@ Vue.config.productionTip = false
 
 function loggedIn(){
   let token = localStorage.getItem('token')
-  // axios.defaults.headers.common['Authorization'] = token
-  return axios.get(`/api/login`).then(response => {
-    console.log(response.data)
-    if (token === response.data.token){
+  axios.defaults.headers.common['authorization'] = token
+  return axios.post(`/api/verifica`).then(response => {
+    console.log(response.data.token)
+    console.log(token)
+    if (token == response.data.token){
       return true
     } else {
       return false
@@ -21,9 +22,9 @@ function loggedIn(){
 /* Valida Login */
 router.beforeEach(async (to, from, next) => {
   const token = await loggedIn()
-  console.log(token)
-  next()
-  /*if (to.matched.some(record => record.meta.requiresAuth)) {
+  console.log(token);
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const token = await loggedIn()
     if (token) {
       next()
     }else {
@@ -32,6 +33,7 @@ router.beforeEach(async (to, from, next) => {
       })
     }
   }else if (to.matched.some(record => record.meta.requiresVisor)){
+    const token = await loggedIn()
     if (!token) {
       next()
     }else {
@@ -42,7 +44,7 @@ router.beforeEach(async (to, from, next) => {
   }
   else {
     next()
-  }*/
+  }
 });
 
 

@@ -23,8 +23,10 @@ router.get('/login', (req, res) => {
   res.json({token});
 });
 
-router.get('/verifica', (req,res) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozfSwiaWF0IjoxNTU5MDcxNDI1fQ.k8KbGLYCFfHB9dUUse_sUTiGvK-B3muDHjBkzZI72bk';
+router.post('/verifica', (req,res) => {
+  const token = req.headers['authorization'];
+  // const token = req.body.token;
+  // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozfSwiaWF0IjoxNTU5MTA0MDM3fQ.XVWE7OCIpm__SW4tJem1hkX3F14gq5bL3jUGqyW6UbQ';
   jwt.verify(token, 'moises', function(err, user) {
     if (err) {
       res.status(401).send({
@@ -32,7 +34,7 @@ router.get('/verifica', (req,res) => {
       })
     } else {
       res.send({
-        message: 'Awwwww yeah!!!!'
+        token: token
       })
     }
   });
