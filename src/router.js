@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/login/Login.vue'
+import Register from './views/login/Register.vue'
+import Panel from './views/panel/Main.vue'
+import Logout from './views/login/Logout.vue'
 
 Vue.use(Router)
 
@@ -17,7 +20,26 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: {
+        requiresVisor: true
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
+      meta: {
+        requiresVisor: true
+      }
+    },
+    {
+      path: '/panel',
+      name: 'panel',
+      component: Panel,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/about',
