@@ -18,8 +18,8 @@
       enviar: function () {
         axios.get('/api/login').then(res => {
           localStorage.setItem('token',res.data.token)
-          this.$router.push('panel')
-          console.log(res.data.token);
+          window.location.href = "/panel";
+          // this.$router.push('panel')
         })
         // console.log(this.user);
       }

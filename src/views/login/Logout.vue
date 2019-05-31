@@ -9,7 +9,8 @@
     name: 'logout',
     created() {
       localStorage.removeItem('token');
-      this.$router.push('login')
+      window.location.href = "/login";
+      // this.$router.push('login')
     }
   }
 </script>

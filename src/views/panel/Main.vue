@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  console.log(window.location.pathname);
   export default {
     name: 'panel'
   }

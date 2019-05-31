@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="url != '/login'">
       <router-link to="/">Home </router-link>
-      <router-link to="/login" > | Login</router-link>
-      <router-link to="/register" > | Registro </router-link>
-      <router-link to="/panel" > | Panel  </router-link>
+      <a href="/login">| Login </a>
+      <router-link to="/register" v-if="!tokenn"> | Registro </router-link>
+      <router-link to="/panel" v-if="tokenn"> | Panel  </router-link>
       <router-link to="/logout" v-if="tokenn"> | Logout</router-link>
     </div>
     <router-view/>
@@ -34,25 +34,26 @@
 </style>
 
 <script>
-
   export default {
-
     data(){
       return{
         token: '',
-        acces: false
+        url: window.location.pathname
       }
     },
-    methods: {
+    computed: {
       tokenn: function () {
-        if (localStorage.getItem('token').length > 3 ){
-          console.log('moi')
+        if (localStorage.getItem('token')){
+          return true
+        }else{
           return false
         }
+        console.log(this.url);
       }
     },
     created() {
 
+      // console.log(this.token)
     }
   }
 
