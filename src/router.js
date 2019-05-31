@@ -42,6 +42,14 @@ export default new Router({
       }
     },
     {
+      path: '/logout',
+      name: 'logout',
+      component: Logout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

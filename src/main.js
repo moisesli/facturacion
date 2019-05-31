@@ -7,7 +7,7 @@ Vue.config.productionTip = false
 
 function loggedIn(){
   // Obtiene token del local Storage
-  let token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
   // console.log(token);
 
   // Envia por default a todas las peticiones el token por el metodo header

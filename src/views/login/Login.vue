@@ -18,6 +18,7 @@
       enviar: function () {
         axios.get('/api/login').then(res => {
           localStorage.setItem('token',res.data.token)
+          this.$router.push('panel')
           console.log(res.data.token);
         })
         // console.log(this.user);

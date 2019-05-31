@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link>  |
-      <router-link to="/register">Registro</router-link>  |
-      <router-link to="/panel">Panel</router-link>
+      <router-link to="/">Home </router-link>
+      <router-link to="/login" > | Login</router-link>
+      <router-link to="/register" > | Registro </router-link>
+      <router-link to="/panel" > | Panel  </router-link>
+      <router-link to="/logout" v-if="tokenn"> | Logout</router-link>
     </div>
     <router-view/>
   </div>
@@ -31,3 +32,28 @@
   color: #42b983;
 }
 </style>
+
+<script>
+
+  export default {
+
+    data(){
+      return{
+        token: '',
+        acces: false
+      }
+    },
+    methods: {
+      tokenn: function () {
+        if (localStorage.getItem('token').length > 3 ){
+          console.log('moi')
+          return false
+        }
+      }
+    },
+    created() {
+
+    }
+  }
+
+</script>
