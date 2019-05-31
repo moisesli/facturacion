@@ -17,8 +17,8 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item href="#"><i class="fa fa-user-circle"></i> Login</b-nav-item>
-            <b-nav-item href="#"><i class="fa fa-file-alt"></i> Registro</b-nav-item>
-            <b-nav-item href="#"><i class="fa fa-sign-out-alt"></i> Salir</b-nav-item>
+            <b-nav-item href="#" to="/register"><i class="fa fa-file-alt"></i> Registro</b-nav-item>
+            <b-nav-item href="#" to="/logout"><i class="fa fa-sign-out-alt"></i> Salir</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
