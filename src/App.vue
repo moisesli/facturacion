@@ -10,15 +10,14 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="#">Link</b-nav-item>
-            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+            <b-nav-item href="#" to="/panel">Panel</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#"><i class="fa fa-user-circle"></i> Login</b-nav-item>
-            <b-nav-item href="#" to="/register"><i class="fa fa-file-alt"></i> Registro</b-nav-item>
-            <b-nav-item href="#" to="/logout"><i class="fa fa-sign-out-alt"></i> Salir</b-nav-item>
+            <b-nav-item href="/login">Login</b-nav-item>
+            <b-nav-item href="#" to="/register">Registro</b-nav-item>
+            <b-nav-item href="#" to="/logout">Salir</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
