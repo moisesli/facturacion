@@ -33,7 +33,7 @@
 
 <style>
 #app {
-  text-align: center;
+
 }
 #nav {
   padding: 30px;
