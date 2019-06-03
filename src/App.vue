@@ -10,31 +10,24 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="#" to="/panel">Panel</b-nav-item>
+            <b-nav-item to="/panel" v-if="tokenn">Panel</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="/login">Login</b-nav-item>
-            <b-nav-item href="#" to="/register">Registro</b-nav-item>
-            <b-nav-item href="#" to="/logout">Salir</b-nav-item>
+            <b-nav-item href="/login" v-if="!tokenn">Login</b-nav-item>
+            <b-nav-item to="/register" v-if="!tokenn">Registro</b-nav-item>
+            <b-nav-item href="#" to="/logout" v-if="tokenn">Salir</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
     </div>
     <!--  End Menu Header  -->
 
-    <div id="nav" v-if="url != '/login'">
-      <router-link to="/">Home </router-link>
-      <a href="/login">| Login </a>
-      <router-link to="/register" v-if="!tokenn"> | Registro </router-link>
-      <router-link to="/panel" v-if="tokenn"> | Panel  </router-link>
-      <router-link to="/logout" v-if="tokenn"> | Logout</router-link>
-    </div>
-
     <div class="container">
       <router-view/>
     </div>
+
   </div>
 </template>
 
