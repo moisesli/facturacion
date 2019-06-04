@@ -1,32 +1,46 @@
 <template>
   <div id="app">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light p-2">
+      <a class="navbar-brand" href="/">
+        Factura Electronica
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
 
-    <!--  Menu Header  -->
-    <div>
-      <b-navbar toggleable="lg" type="light" variant="light">
-        <b-navbar-brand href="#">Lineysoft</b-navbar-brand>
+          <!-- Products -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="/views/products/index.php" v-if="tokenn">Productos</a>
+          </li>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <!-- Clientes -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="/views/customers/index.php" v-if="tokenn">Clientes</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+          <li class="nav-item">
+            <a href="/login" v-if="!tokenn" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/register" v-if="!tokenn" class="nav-link">Register</a>
+          </li>
+          <!-- Logout -->
+          <li class="nav-item" v-if="tokenn">
+            <router-link class="nav-link" :to="{name: 'logout'}">
+              <i class="fa fa-lock"></i> Salir
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item to="/panel" v-if="tokenn">Panel</b-nav-item>
-          </b-navbar-nav>
-
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item href="/login" v-if="!tokenn">Login</b-nav-item>
-            <b-nav-item to="/register" v-if="!tokenn">Registro</b-nav-item>
-            <b-nav-item href="#" to="/logout" v-if="tokenn">Salir</b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-    <!--  End Menu Header  -->
-
-    <div class="container">
+    <div class="container" style="padding: 60px;">
       <router-view/>
     </div>
+
 
   </div>
 </template>
@@ -64,7 +78,7 @@
         }else{
           return false
         }
-        console.log(this.url);
+        // console.log(this.url);
       }
     },
     created() {
