@@ -1,23 +1,31 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light p-2">
-      <a class="navbar-brand" href="/">
-        Factura Electronica
-      </a>
+      <router-link class="navbar-brand" :to="{name: 'home'}">Factura Electronica</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
 
+          <!-- Panel -->
+          <li class="nav-item dropdown" v-if="tokenn">
+            <router-link class="nav-link" :to="{name: 'panel'}">Panel</router-link>
+          </li>
+
+          <!-- Documentos -->
+          <li class="nav-item dropdown" v-if="tokenn">
+            <router-link class="nav-link" :to="{name: 'documentos'}">Documentos</router-link>
+          </li>
+
           <!-- Products -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="/views/products/index.php" v-if="tokenn">Productos</a>
+          <li class="nav-item dropdown" v-if="tokenn">
+            <router-link class="nav-link" :to="{name: 'productos'}">Productos</router-link>
           </li>
 
           <!-- Clientes -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="/views/customers/index.php" v-if="tokenn">Clientes</a>
+          <li class="nav-item dropdown" v-if="tokenn">
+            <router-link class="nav-link" :to="{name: 'clientes'}">Clientes</router-link>
           </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
