@@ -45,31 +45,13 @@
       </div>
     </nav>
 
-    <div class="container" style="padding: 60px;">
+    <div class="container" style="padding-top: 60px;">
       <router-view/>
     </div>
 
 
   </div>
 </template>
-
-<style>
-#app {
-
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
 
 <script>
   export default {
