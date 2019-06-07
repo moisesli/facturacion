@@ -1,7 +1,17 @@
-var express = require('express')
-var router = express.Router()
+var express = require('express');
+var mysql = require('./config/db');
 const path = require('path')
 const jwt = require('jsonwebtoken');
+
+var router = express.Router()
+
+
+router.get('/sql', function (req, res) {
+  mysql.query('SELECT * from  emisores', function(err, rows, fields) {
+    if (err) throw err;
+    res.send(rows);
+  });
+});
 
 // Archivo estatico
 // app.use('/static', express.static(__dirname + '/assets'));
