@@ -6,12 +6,24 @@ const jwt = require('jsonwebtoken');
 var router = express.Router()
 
 
-router.get('/sql', function (req, res) {
-  mysql.query('SELECT * from  emisores', function(err, rows, fields) {
+router.get('/documentos', function (req, res) {
+  mysql.query('SELECT documento from  documentos', function(err, rows, fields) {
+
+    // Error
     if (err) throw err;
-    res.send(rows);
+
+    // ForEach
+    var documentos = new Array();
+    rows.forEach(documento => {
+      documentos.push(JSON.parse(documento.documento));
+    })
+
+    // Responponse
+    res.json(documentos);
   });
 });
+
+
 
 // Archivo estatico
 // app.use('/static', express.static(__dirname + '/assets'));

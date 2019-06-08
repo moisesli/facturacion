@@ -24,6 +24,39 @@
         <th>Moneda</th>
         <th class="text-right">Total</th>
       </tr>
+      <tr v-for="doc in docs">
+        <td>{{doc.documentoFecha}}</td>
+        <td>{{doc.documentoTipo}}</td>
+        <td>{{doc.documentoSerie}}</td>
+        <td>{{doc.documentoSerie}}</td>
+        <td>{{doc.clienteDniRuc}}</td>
+        <td>{{doc.clienteRazon.substring(0,35)}}</td>
+        <td><button class="btn btn-sm btn-light"><i class="fa fa-cog"></i></button></td>
+        <td>{{doc.documentoMoneda}}</td>
+        <td>{{doc.documentoTotal}}</td>
+      </tr>
     </table>
   </div>
 </template>
+
+<script>
+  import axios from 'axios'
+  export default {
+    data(){
+      return{
+        docs: []
+      }
+    },
+    methods: {
+      getDocs: function () {
+        axios.get('/api/documentos').then(res => {
+          this.docs = res.data;
+          console.log(this.docs)
+        })
+      }
+    },
+    created: function(){
+      this.getDocs();
+    }
+  }
+</script>
