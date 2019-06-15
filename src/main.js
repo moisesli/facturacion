@@ -1,65 +1,54 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
+import store from './store'
+const $ = require('jquery')
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Inicializa bootstrap
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+window.$ = $;
 
-function loggedIn(){
-  // Obtiene token del local Storage
-  const token = localStorage.getItem('token')
-  // console.log(token);
+// axios.interceptors.request.use(request => {
+//   console.log(request)
+//   return request
+// })
 
-  // Envia por default a todas las peticiones el token por el metodo header
-  axios.defaults.headers.common['authorization'] = token
-  return axios.post(`/api/verifica`).then(response => {
-    // console.log(response.data.token)
-    // console.log(token)
-    if (token == response.data.token){
-      return true
-    } else {
-      return false
-    }
-  })
-}
+// if (window.location.origin === 'http://localhost:8081'){
+//   axios.defaults.baseURL = 'http://api.lineysoft2.com:8080/'
+// }else {
+//   axios.defaults.baseURL = 'http://api.lineysoft.com/'
+// }
 
-/* Valida Login */
-router.beforeEach(async (to, from, next) => {
-  // const token = await loggedIn()
-  // console.log(token);
 
-  //Require que el token sea Verdadero
+router.beforeEach((to, from, next) => {
+  console.log(to)
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    const token = await loggedIn()
-    if (token) {
-      next()
-    }else {
+    console.log('visor')
+    if (!store.getters.loggedIn) {
       next({
-        name: 'login'
+        name: 'login',
       })
-    }
-  // Necesariamente el toquen tiene que ser falso, son para paginas como register o login
-  }else if (to.matched.some(record => record.meta.requiresVisor)){
-    const token = await loggedIn()
-    if (!token) {
+    } else {
       next()
-    }else {
-      next({
-        name: 'panel'
-      })
     }
-  }
-  else {
+  } else if (to.matched.some(record => record.meta.requiresVisitor)) {
+    if (store.getters.loggedIn) {
+      next({
+        name: 'panel',
+      })
+    } else {
+      next()
+    }
+  } else {
     next()
   }
-});
-
-
+})
 
 new Vue({
   router,
+  store: store,
   render: h => h(App)
 }).$mount('#app')

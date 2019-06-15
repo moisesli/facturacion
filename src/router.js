@@ -3,26 +3,37 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/login/Login.vue'
 import Register from './views/login/Register.vue'
-import Documentos from './views/documentos/Documentos'
+import Documentos from './views/documentos/Documentos.vue'
 import Panel from './views/panel/Main.vue'
 import Logout from './views/login/Logout.vue'
-import Productos from './views/productos/Productos'
-import Clientes from './views/clientes/Clientes'
+import Productos from './views/productos/Productos.vue'
+import Clientes from './views/clientes/Clientes.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const routes = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    { path: '/', name: 'home', component: Home },
-    { path: '/login', name: 'login', component: Login, meta: { requiresVisor: true } },
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        requiresVisitor: true,
+      }
+    },
     {
       path: '/register',
       name: 'register',
       component: Register,
       meta: {
-        requiresVisor: true
+        requiresVisitor: true,
       }
     },
     {
@@ -75,3 +86,5 @@ export default new Router({
     }
   ]
 })
+
+export default routes

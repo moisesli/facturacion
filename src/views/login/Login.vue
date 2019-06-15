@@ -2,26 +2,23 @@
   <div>
     <input type="text" v-model="user.nombre" placeholder="user">
     <input type="text" v-model="user.password" placeholder="password">
-    <button @click="enviar">enviar</button>
+    <button @click="login">enviar</button>
   </div>
 </template>
 <script>
   const axios = require('axios');
+  var qs = require('qs');
   export default {
-    name: 'login',
     data(){
       return{
         user: {}
       }
     },
     methods: {
-      enviar: function () {
-        axios.get('/api/login').then(res => {
-          localStorage.setItem('token',res.data.token)
-          window.location.href = "/panel";
-          // this.$router.push('panel')
+      login(){
+        this.$store.dispatch('retrieveToken', {}).then(response => {
+          this.$router.push({ name: 'documentos' })
         })
-        // console.log(this.user);
       }
     }
   }

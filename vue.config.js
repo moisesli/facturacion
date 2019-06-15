@@ -1,7 +1,6 @@
-const configureAPI = require('./src/api/midelware')
-
-module.exports = {
-    devServer: {
-        before: configureAPI
-    }
-}
+// const configureAPI = require('./src/api/midelware')
+// module.exports = {
+//     devServer: {
+//         before: configureAPI
+//     }
+// }
