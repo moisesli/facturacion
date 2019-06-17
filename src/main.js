@@ -24,9 +24,7 @@ window.$ = $;
 
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    console.log('visor')
     if (!store.getters.loggedIn) {
       next({
         name: 'login',

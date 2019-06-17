@@ -6,11 +6,10 @@
 
 <script>
   export default {
-    name: 'logout',
     created() {
-      localStorage.removeItem('token');
-      window.location.href = "/login";
-      // this.$router.push('login')
+      this.$store.dispatch('destroyToken').then(response => {
+        this.$router.push({ name: 'login' })
+      })
     }
   }
 </script>

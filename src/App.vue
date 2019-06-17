@@ -35,6 +35,11 @@
           <li class="nav-item">
             <a href="/register" v-if="!loggedIn" class="nav-link">Register</a>
           </li>
+
+          <li class="nav-item" v-if="loggedIn">
+            <span class="nav-link">{{$store.state.email}}</span>
+          </li>
+
           <!-- Logout -->
           <li class="nav-item" v-if="loggedIn">
             <router-link class="nav-link" :to="{name: 'logout'}">
@@ -54,11 +59,10 @@
 </template>
 
 <script>
-  import { store } from './store'
   export default {
     data(){
       return {
-        token: ''
+        token: '',
         // url: window.location.pathname
       }
     },
