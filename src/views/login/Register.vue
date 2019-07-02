@@ -47,11 +47,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-sm-4">
-              <input
-                v-model="empresa.dni"
-                type="number" class="form-control" placeholder="DNI">
-            </div> -->
           </div>
 
           <!-- Nombre usuario -->
@@ -59,7 +54,7 @@
             <label class="col-sm-3 col-form-label">Nombre Completo</label>
             <div class="col-sm-7">
               <input
-                v-model="empresa.nombreCompleto"
+                v-model="empresa.nombre"
                 type="text" class="form-control" placeholder="Nombre Completo">
 
             </div>
@@ -122,7 +117,9 @@
           ruc: '',
           razon: '',
           dni: '',
-          nombreCompleto: ''
+          nombre: '',
+          email: '',
+          contrasena: ''
         }
       }
     },
@@ -140,7 +137,7 @@
       getDni: function () {
         if (this.empresa.dni.length == 8){
           axios.post('http://api.lineysoft2.com/apiCliente/helper/ruc.php',qs.stringify({ruc: this.empresa.dni})).then(res => {
-            this.empresa.nombreCompleto = res.data;                        
+            this.empresa.nombre = res.data;
           })          
         }
       }
