@@ -125,18 +125,22 @@
     },
     methods: {
       registrar: function () {
+
+        axios.post('/apiCliente/login/register.php',qs.stringify(this.empresa)).then(res => {
+          console.log(res.data)
+        })
         console.log(this.empresa)
       },
       getRuc: function () {
         if (this.empresa.ruc.length == 11){
-          axios.post('http://api.lineysoft2.com/apiCliente/helper/ruc.php',qs.stringify({ruc: this.empresa.ruc})).then(res => {
+          axios.post('/apiCliente/helper/ruc.php',qs.stringify({ruc: this.empresa.ruc})).then(res => {
             this.empresa.razon = res.data;                        
           })          
         }
       },
       getDni: function () {
         if (this.empresa.dni.length == 8){
-          axios.post('http://api.lineysoft2.com/apiCliente/helper/ruc.php',qs.stringify({ruc: this.empresa.dni})).then(res => {
+          axios.post('apiCliente/helper/ruc.php',qs.stringify({ruc: this.empresa.dni})).then(res => {
             this.empresa.nombre = res.data;
           })          
         }

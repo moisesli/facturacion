@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 const $ = require('jquery')
+import axios from 'axios'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -16,11 +17,11 @@ window.$ = $;
 //   return request
 // })
 
-// if (window.location.origin === 'http://localhost:8081'){
-//   axios.defaults.baseURL = 'http://api.lineysoft2.com:8080/'
-// }else {
-//   axios.defaults.baseURL = 'http://api.lineysoft.com/'
-// }
+if (window.location.origin === 'http://localhost:8080'){
+  axios.defaults.baseURL = 'http://api.localhost/'
+}else {
+  axios.defaults.baseURL = 'http://api.lineysoft.com/'
+}
 
 
 router.beforeEach((to, from, next) => {
