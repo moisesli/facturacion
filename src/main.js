@@ -24,6 +24,7 @@ if (window.location.origin === 'http://localhost:8080'){
 }
 
 
+
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.getters.loggedIn) {

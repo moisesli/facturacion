@@ -3,7 +3,11 @@
     <h2 class="pb-4 pt-3">Registro de Empresa</h2>
     <div class="row">
       <div class="col-lg-8">
-
+        <div class="row alert alert-danger" v-show="error.length>2">
+          <div class="col">
+            {{error}}
+          </div>
+        </div>
         <!-- FORMULARIO DE REGISTRO -->
         <form v-on:submit.prevent="registrar">
 
@@ -113,6 +117,7 @@
   export default {
     data() {
       return {
+        error: '',
         empresa: {
           ruc: '',
           razon: '',
@@ -125,11 +130,16 @@
     },
     methods: {
       registrar: function () {
+        let post = qs.stringify({empresa: this.empresa});
+        axios.post('/apiCliente/login/register.php',post).then(res => {
+          if (res.data == 'si'){
 
-        axios.post('/apiCliente/login/register.php',qs.stringify(this.empresa)).then(res => {
-          console.log(res.data)
+          }else{
+            this.error = res.data;
+          }
+          // console.log(res.data)
         })
-        console.log(this.empresa)
+        // console.log(this.empresa)
       },
       getRuc: function () {
         if (this.empresa.ruc.length == 11){
